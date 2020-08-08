@@ -34,7 +34,6 @@ const AddTodo = (props) => {
               title,
               desc,
             };
-            console.log('Params:', obj);
             props.navigation.navigate('Todos', {obj});
           }}
         />
