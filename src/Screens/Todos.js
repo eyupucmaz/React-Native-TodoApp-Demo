@@ -1,15 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import {FlatList, View, Text, StyleSheet} from 'react-native';
+import {FlatList, View, Text, StyleSheet, Image} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Buttons} from '../Components/Button';
 
 const Todos = (props) => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    console.log('Gelen Depğer: ', props.route.params?.obj);
-
     if (props.route.params?.obj) {
-      let arr = data.slice();
+      let arr = [...data];
       arr.push(props.route.params?.obj);
       setData(arr);
     }
@@ -38,9 +36,10 @@ const Todos = (props) => {
                 marginTop: 20,
                 height: 300,
               }}>
-              <Text style={{fontSize: 16, marginBottom: 15}}>
-                Can not find any todo, please add new
-              </Text>
+              <Image
+                style={{height: 100, width: 100}}
+                source={require('..images/empty.png')}
+              />
               <Buttons
                 text={'Add New'}
                 onPress={() => {
@@ -66,6 +65,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
   },
   title: {
+    color: '#BA3F1D',
     fontSize: 18,
     fontWeight: 'bold',
   },

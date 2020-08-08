@@ -26,7 +26,6 @@ const AddTodo = (props) => {
         />
 
         <Buttons
-          style={{height: 50}}
           text={'Add'}
           onPress={() => {
             let obj = {
