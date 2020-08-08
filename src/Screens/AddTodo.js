@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
+import {View, ScrollView} from 'react-native';
 import {Buttons, Inputs} from '../Components';
 
-const AddTodo = () => {
+const AddTodo = (props) => {
   const [title, setTitle] = useState();
   const [desc, setDesc] = useState();
   return (
@@ -27,16 +26,15 @@ const AddTodo = () => {
         />
 
         <Buttons
+          style={{height: 50}}
           text={'Add'}
           onPress={() => {
-            // let arr = data.slice();
-            // let obj = {
-            //   id: data.length,
-            //   title,
-            //   dsc,
-            // };
-            // arr.push(obj);
-            // setData(arr);
+            let obj = {
+              title,
+              desc,
+            };
+            console.log('Params:', obj);
+            props.navigation.navigate('Todos', {obj});
           }}
         />
       </View>
