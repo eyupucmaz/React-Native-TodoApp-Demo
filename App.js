@@ -14,6 +14,7 @@ export default function App() {
   const [title, setTitle] = useState('');
   const [dsc, setDsc] = useState('');
   const [data, setData] = useState([]);
+
   const renderItem = ({item}) => (
     <View style={styles.item}>
       <Text style={styles.title}>{item.title}</Text>
