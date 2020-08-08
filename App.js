@@ -33,7 +33,7 @@ export default function App() {
           ListEmptyComponent={() => {
             return (
               <View style={{alignItems: 'center', marginTop: 20}}>
-                <Text style={{fontSize: 10}}>
+                <Text style={{fontSize: 20}}>
                   Herhangi bir data bulunamadı.
                 </Text>
               </View>
