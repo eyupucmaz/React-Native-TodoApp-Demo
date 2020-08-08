@@ -16,12 +16,14 @@ const AddTodo = (props) => {
         <Inputs
           placeholder="Title"
           value={title}
+          style={{backgroundColor: '#f4f4f4'}}
           onChangeText={(value) => setTitle(value)}
         />
 
         <Inputs
           placeholder="Description"
           value={desc}
+          style={{backgroundColor: '#f4f4f4'}}
           onChangeText={(value) => setDesc(value)}
         />
 

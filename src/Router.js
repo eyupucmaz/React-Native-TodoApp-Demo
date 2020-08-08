@@ -34,12 +34,13 @@ const Router = () => {
                 />
               </TouchableOpacity>
             ),
+            cardStyle: {backgroundColor: 'white'},
           })}
         />
         <Stack.Screen
           name="Add"
           component={AddTodo}
-          options={{title: 'Add Todo'}}
+          options={{title: 'Add Todo', cardStyle: {backgroundColor: 'white'}}}
         />
       </Stack.Navigator>
     </NavigationContainer>

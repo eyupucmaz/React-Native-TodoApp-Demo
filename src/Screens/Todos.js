@@ -37,8 +37,8 @@ const Todos = (props) => {
                 height: 300,
               }}>
               <Image
-                style={{height: 100, width: 100}}
-                source={require('..images/empty.png')}
+                style={{height: 200, width: 200}}
+                source={require('../images/empty.png')}
               />
               <Buttons
                 text={'Add New'}
