@@ -7,14 +7,17 @@ const Buttons = (props) => {
     <TouchableOpacity
       activeOpacity={0.8}
       onPress={props.onPress}
-      style={{
-        backgroundColor: '#4495cb',
-        width: '90%',
-        height: '15%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 10,
-      }}>
+      style={[
+        {
+          backgroundColor: '#BA3F1D',
+          width: '90%',
+          height: '15%',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: 10,
+        },
+        props.style,
+      ]}>
       <Text
         style={{
           color: 'white',
