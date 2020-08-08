@@ -4,8 +4,25 @@ const {width, height} = Dimensions.get('window');
 
 const Buttons = (props) => {
   return (
-    <TouchableOpacity activeOpacity={0.7} style={styles.button}>
-      <Text style={styles.text}>{props.text}</Text>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={props.onPress}
+      style={{
+        backgroundColor: '#4495cb',
+        width: '90%',
+        height: '15%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 10,
+      }}>
+      <Text
+        style={{
+          color: 'white',
+          fontWeight: 'bold',
+          fontSize: 18,
+        }}>
+        {props.text}
+      </Text>
     </TouchableOpacity>
   );
 };
