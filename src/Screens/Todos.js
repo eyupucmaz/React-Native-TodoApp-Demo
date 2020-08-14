@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {FlatList, View, Text, StyleSheet, Image} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Buttons} from '../Components/Button';
+import {useDispatch, connect} from 'react-redux';
 
 const Todos = (props) => {
   const [data, setData] = useState([]);
@@ -24,7 +25,7 @@ const Todos = (props) => {
     <SafeAreaView style={{flex: 1}}>
       <FlatList
         style={{flex: 1}}
-        data={data}
+        data={props.todos}
         renderItem={renderItem}
         keyExtractor={(item) => item.title}
         ListEmptyComponent={() => {
@@ -75,4 +76,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Todos;
+const mapStateToProps = ({todoResponse}) => {
+  const {todos} = todoResponse;
+  return {todos};
+};
+
+export default connect(mapStateToProps, {})(Todos);

@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
-import {View, ScrollView} from 'react-native';
+import {View, ScrollView, ActivityIndicator} from 'react-native';
 import {Buttons, Inputs} from '../Components';
+import {connect, useDispatch} from 'react-redux';
+import {updateTodo, loadingTodo} from '../Actions';
 
 const AddTodo = (props) => {
+  const dispacth = useDispatch();
   const [title, setTitle] = useState();
   const [desc, setDesc] = useState();
   return (
@@ -34,12 +37,30 @@ const AddTodo = (props) => {
               title,
               desc,
             };
-            props.navigation.navigate('Todos', {obj});
+            props.updateTodo(obj);
+            props.loadingTodo(true);
+            setTimeout(() => {
+              props.loadingTodo(false);
+              props.navigation.pop();
+            }, 2000);
           }}
         />
+        {props.IsLoading && (
+          <ActivityIndicator
+            size="large"
+            color="#BA3F1D"
+            style={{marginTop: 20}}
+          />
+        )}
       </View>
     </ScrollView>
   );
 };
 
-export default AddTodo;
+const mapStateToProps = ({todoResponse}) => {
+  const {todos, loading} = todoResponse;
+  console.log('data', todos, loading);
+  return {todos, loading};
+};
+
+export default connect(mapStateToProps, {updateTodo, loadingTodo})(AddTodo);
