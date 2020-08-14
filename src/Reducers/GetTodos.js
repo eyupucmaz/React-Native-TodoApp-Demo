@@ -1,4 +1,11 @@
-import {LOADING_TODO, UPDATE_TODOS, GET_TODOS} from '../Actions/Types';
+import {
+  LOADING_TODO,
+  UPDATE_TODOS,
+  GET_TODOS,
+  ADD_TODO_LOCAL,
+  SET_TODOS,
+} from '../Actions/Types';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const INITIAL_STATE = {
   todos: [],
@@ -15,7 +22,11 @@ export default (state = INITIAL_STATE, action) => {
       const newTodo = action.payload;
       let arr = [...state.todos];
       arr.push(newTodo);
+      AsyncStorage.setItem(ADD_TODO_LOCAL, JSON.stringify(arr));
       return {...state, todos: arr};
+
+    case SET_TODOS:
+      return {...state, todos: action.payload};
     default:
       return state;
   }

@@ -2,17 +2,17 @@ import React, {useState, useEffect} from 'react';
 import {FlatList, View, Text, StyleSheet, Image} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Buttons} from '../Components/Button';
-import {useDispatch, connect} from 'react-redux';
+import {connect} from 'react-redux';
+// import {ADD_TODO_LOCAL, SET_TODOS} from '../Actions/Types';
+import {setTodos} from '../Actions';
 
 const Todos = (props) => {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
+  // const dispatch = useDispatch();
+
   useEffect(() => {
-    if (props.route.params?.obj) {
-      let arr = [...data];
-      arr.push(props.route.params?.obj);
-      setData(arr);
-    }
-  }, [props.route.params?.obj]);
+    props.setTodos();
+  }, []);
 
   const renderItem = ({item}) => (
     <View style={styles.item}>
@@ -44,7 +44,7 @@ const Todos = (props) => {
               <Buttons
                 text={'Add New'}
                 onPress={() => {
-                  props.navigation.navigate('Add', {data});
+                  props.navigation.navigate('Add');
                 }}
               />
             </View>
@@ -77,8 +77,8 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = ({todoResponse}) => {
-  const {todos} = todoResponse;
-  return {todos};
+  const {todos, loading} = todoResponse;
+  return {todos, loading};
 };
 
-export default connect(mapStateToProps, {})(Todos);
+export default connect(mapStateToProps, {setTodos})(Todos);

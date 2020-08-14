@@ -7,6 +7,8 @@ const Inputs = (props) => (
   <TextInput
     placeholder={props.placeholder}
     value={props.value}
+    multiline={props.multiline}
+    numberOfLines={props.numberOfLines}
     onChangeText={(value) => props.onChangeText(value)}
     style={[styles.input, props.style]}
   />
@@ -24,6 +26,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     marginBottom: height * 0.02,
     fontSize: 18,
+    textAlignVertical: 'top',
   },
 });
 

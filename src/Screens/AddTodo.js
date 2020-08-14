@@ -28,7 +28,8 @@ const AddTodo = (props) => {
         <Inputs
           placeholder="Description"
           value={desc}
-          style={{backgroundColor: '#f4f4f4'}}
+          multiline={true}
+          style={{backgroundColor: '#f4f4f4', height: 200}}
           onChangeText={(value) => setDesc(value)}
         />
 
@@ -63,7 +64,6 @@ const AddTodo = (props) => {
 
 const mapStateToProps = ({todoResponse}) => {
   const {todos, loading} = todoResponse;
-  console.log('data', todos, loading);
   return {todos, loading};
 };
 
