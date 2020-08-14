@@ -47,7 +47,7 @@ const AddTodo = (props) => {
               // dispacth({type: LOADING_TODO, payload: false});
               props.loadingTodo(false);
               props.navigation.pop();
-            }, 2000);
+            }, 1000);
           }}
         />
         {props.loading && (
