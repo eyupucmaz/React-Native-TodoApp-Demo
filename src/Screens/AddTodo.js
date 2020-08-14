@@ -3,6 +3,8 @@ import {View, ScrollView, ActivityIndicator} from 'react-native';
 import {Buttons, Inputs} from '../Components';
 import {connect, useDispatch} from 'react-redux';
 import {updateTodo, loadingTodo} from '../Actions';
+import {AsyncStorage} from 'react-native';
+import {LOADING_TODO} from '../Actions/Types';
 
 const AddTodo = (props) => {
   const dispacth = useDispatch();
@@ -38,14 +40,16 @@ const AddTodo = (props) => {
               desc,
             };
             props.updateTodo(obj);
+            // dispacth({type: LOADING_TODO, payload: true});
             props.loadingTodo(true);
             setTimeout(() => {
+              // dispacth({type: LOADING_TODO, payload: false});
               props.loadingTodo(false);
               props.navigation.pop();
             }, 2000);
           }}
         />
-        {props.IsLoading && (
+        {props.loading && (
           <ActivityIndicator
             size="large"
             color="#BA3F1D"
